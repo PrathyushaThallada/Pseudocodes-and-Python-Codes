@@ -1,0 +1,52 @@
+#Supermarket Code:
+
+import pandas as pd
+def enterStore():
+    print("Welcome to the store")
+    cart=[]
+    Totalcartprice=0
+    data = pd.read_excel(r"D:\Products.xlsx",index_col=0)
+    while True:
+        Priceofproduct=0
+        l=[]
+        item=input("Enter item to be added to cart : ")
+        itemlist = data.index.tolist()
+        if item in itemlist:
+            count=int(input("Enter number of units: "))
+            price = data.loc[item,'Price per unit']
+            print(price)
+            Priceofproduct=Priceofproduct+(count*price)
+            Totalcartprice=Totalcartprice+Priceofproduct
+            l=[item,count,price,Priceofproduct]
+            cart.append(l)
+            leftstock=data.loc[item,'Quantity(in pcs)']-count
+            data.loc[item,'Quantity(in pcs)']=leftstock
+        else:
+            print("Item not found")
+        nextitem=input() #True interested to buy one more item if False not interested
+        if nextitem=='True':
+            continue
+        elif nextitem=='False':
+            break
+    return Totalcartprice
+def account(user_balance,amount):
+    if amount<=user_balance:
+        user_balance=user_balance-amount
+        return 1
+    else:
+        return 0
+def user():
+    user_balance=float(input("Amount debited/ present in account: "))
+    return user_balance  
+#Main Block of Code     
+flag=1 #consider flag as valid QR code
+if flag==1:
+    balance=user()
+    amount=enterStore() #amount to be payed by user for products
+    status=account(balance,amount)
+    if status==1:
+        print("Your payment is successful, your account is credited by Rs.",amount,"/-")
+        print("Thankyou for visiting our store...")
+    else:
+        print("Your Account balance is insufficient")
+        print("Sorry, Pay Manually")

@@ -1,0 +1,14 @@
+#Dictionary Program:
+
+dictionary={}
+count=1
+while(count<=10):
+    key=input()
+    value=int(input())
+    dictionary.update({key:value})
+    count=count+1
+sum1=0
+for i in dictionary.values():
+    sum1=sum1+i
+print(dictionary)
+print("Sum of all values in dictionary is",sum1)

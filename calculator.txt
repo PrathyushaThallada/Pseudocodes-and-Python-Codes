@@ -1,0 +1,69 @@
+#Calculator Program:
+import math
+def addition(a,b):
+    return a+b
+def substraction(a,b):
+    diff=a-b
+    return diff
+def multiplication(a,b):
+    product=a*b
+    return product
+def division(a,b):
+    div=a/b
+    return div 
+def factorial(a):
+    fact=1
+    for i in range(1,a+1):
+        fact=fact*i
+    return fact
+def squareroot(a):
+    return math.sqrt(a)
+
+print("Select the operation to be performed")
+print("1.(+) Addition")
+print("2.(-) Subtraction")
+print("3.(*) Multiplication")
+print("4.(/) Division")
+print("5.(!) Factorial")
+print("6.(sqrt) Squareroot")
+while True:
+    choice=input("Enter operation to be performed : ")
+    if choice in ['+','-','*','/','!','sqrt']:
+        if choice=='+':
+            a=int(input("Enter a value: "))
+            b=int(input("Enter b value: "))
+            print(a,'+',b,'=',addition(a,b))
+        elif choice=='-':
+            a=int(input("Enter a value: "))
+            b=int(input("Enter b value: "))
+            print(a,'-',b,'=',substraction(a,b))
+        elif choice=='*':
+            a=int(input("Enter a value: "))
+            b=int(input("Enter b value: "))
+            print(a,'*',b,'=',multiplication(a,b))
+        elif choice=='/':
+            a=int(input("Enter a value: "))
+            b=int(input("Enter b value: "))
+            print(a,'/',b,'=',division(a,b))
+        elif choice=='!':
+            a=int(input("Enter a value: "))
+            print(factorial(a))
+        elif choice=='sqrt':
+            a=int(input("Enter a value: "))
+            print("Square root of",a,"is",squareroot(a))
+        else:
+            print("Invalid Operation")
+    t=input("Do you want to continue with next operation:(YES/NO): ")
+    if t=="NO":
+        break
+    elif t=="YES":
+        Continue
+
+
+
+
+
+
+
+
+
