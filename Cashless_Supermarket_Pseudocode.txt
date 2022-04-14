@@ -1,0 +1,136 @@
+Pseudocode
+
+Case Study
+Write the pseudocode determining the full functionality of billing and payment flow in Cashless Supermarket’s.
+
+
+
+Begin Validate(QRCode):
+#Validate User Function
+c=0
+if(QR code in database and valid):
+	c=c+1
+	Validate user and allow him to store
+	If c=1:
+		EnterStore() #call function enter
+	elif c==2:
+		k=Billing()#call Bill function
+		If k==1:
+			Open the way by validating QR Code
+		Else:
+			Don’t Open the store gate
+			Print “Please pay complete bill amount is insufficient”
+	else:
+		Display Invalid User
+End Validate
+
+
+
+
+
+
+
+
+
+
+
+
+Begin EnterStore:
+	  #Enter EnterStore Function
+
+	  price=0
+	  cart=[]
+#User picks item camera matches face and add that particular item to cart list
+item=selected item
+quantity=0
+While item!=Null:
+quantity=quantity+1
+cart.add(item)
+price=price+(quantity*Amount(price of item))
+If User scansQR code:
+	#Validate Qr Code
+	Validate (QR Code)
+Else:
+		EnterStore()
+End EnterStore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Begin Billing(cart,price):
+	balance=amount in persons account
+	If price<=balance:
+balance=balance-price
+Print “Price is being credited”
+Print “Thankyou for being part of Store”
+k=1
+Return k
+elif price>balance:
+	Print “Insufficient Balance”
+	Print “go to counter pay using online payment mode from another account”
+	#User goes to counter and pays bill
+	#After paying bill near counter it will assign a QR Code Which indicating payment status as Successful
+Code1=PaymentSuccessfulCode
+ManualPaymentValidate(Code1) #Validating user and validating payment status
+	
+End Billing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Begin ManualPaymentValidate(cart, price,Code1):
+	#scans QR code of gpay or phonepay manually enters amount by referring to cart price
+	Entered_amount=User enters amount to pay
+	If Entered_amount==price:
+		k=1
+		Validate(QR code)
+	Return k
+End ManualPaymentValidate
+
+
+
+
+
+Begin Amount(item):
+#Backend code is linked with items and their associated prices database.
+If item==record in database:
+		Return amount of item
+End Amount
+
+
+
+
+
+Begin Main:
+User Enters
+Scan the QR code
+#Validate QR code
+validate(QR code)  #call function validate
+End Main
+
+
